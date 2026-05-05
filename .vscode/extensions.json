@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",          // Analiza kodu ESLint
+    "esbenp.prettier-vscode",          // Formatowanie kodu Prettier
+    "hediet.vscode-drawio",            // Modelowanie diagramów UML
+    "bradlc.vscode-tailwindcss",       // Wsparcie dla Tailwind CSS
+    "alexcvzz.vscode-sqlite",          // Przeglądarka bazy danych SQLite
+  ]
+}
