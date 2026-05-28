@@ -1,14 +1,23 @@
-import { useState } from 'react';
-
 import Layout from '../components/Layout';
 import XPBar from '../components/XPBar';
 import TaskCard from '../components/TaskCard';
 
 import { player, tasks } from '../data/mockData';
 
+import { useState, useEffect } from 'react';
+import { getPlayerData } from '../services/api';
+
 function Dashboard() {
   const [playerData, setPlayerData] = useState(player);
   const [taskList, setTaskList] = useState(tasks);
+
+  useEffect(() => {
+    getPlayerData()
+      .then(data => {
+        setPlayerData(data);
+      })
+      .catch(err => console.error("Błąd ładowania danych z API:", err));
+  }, []);
 
   function completeTask(id) {
     const selectedTask = taskList.find((task) => task.id === id);
