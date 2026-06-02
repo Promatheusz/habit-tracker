@@ -1,5 +1,5 @@
 function XPBar({ currentXP, maxXP, level }) {
-  const percentage = (currentXP / maxXP) * 100;
+  const percentage = maxXP > 0 ? Math.min((currentXP / maxXP) * 100, 100) : 0;
 
   return (
     <div>

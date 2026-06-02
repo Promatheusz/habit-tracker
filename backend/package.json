@@ -7,7 +7,14 @@
     "cors": "^2.8.5",
     "sqlite3": "^5.1.7"
   },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "prettier": "^3.3.3"
+  },
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "test": "node --test --test-isolation=none",
+    "lint": "eslint src test",
+    "format": "prettier --write \"src/**/*.js\" \"test/**/*.js\""
   }
 }

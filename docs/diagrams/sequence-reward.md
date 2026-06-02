@@ -17,7 +17,7 @@ sequenceDiagram
     Frontend-->>Player: 6. Display available rewards
 
     Player->>Frontend: 7. Click Buy reward
-    Frontend->>Backend: 8. POST /rewards/:id/buy
+    Frontend->>Backend: 8. POST /api/rewards/:id/buy
     Backend->>DB: 9. SELECT currency FROM player
     DB-->>Backend: 10. currency value
     Backend->>DB: 11. If currency is enough UPDATE player SET currency=currency-:cost

@@ -21,6 +21,7 @@ classDiagram
         +INTEGER player_id FK
         +TEXT name
         +TEXT description
+        +TEXT difficulty
         +TEXT frequency
         +TEXT target_days_of_week
         +INTEGER target_days_per_week

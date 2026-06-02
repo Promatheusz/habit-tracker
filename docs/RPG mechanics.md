@@ -19,4 +19,4 @@ The system features ten baseline character levels. The total points required to 
 
 ### Reward Economy
 
-Experience points simultaneously function as the in-app virtual currency. Users can choose to spend accumulated resources in the store, which deducts the corresponding points from their balance without downgrading their current character level. Sample rewards include visual bonuses, unlockable profile icons, or custom, user-defined real-world incentives, such as a coffee break or dedicated video game time.
+The app stores total experience points separately from spendable currency. Completing habits increases both totals using the habit difficulty reward. Level progression is calculated from total XP, while reward purchases deduct only currency. This means buying a reward never downgrades the current character level. Sample rewards include visual bonuses, unlockable profile icons, or custom, user-defined real-world incentives, such as a coffee break or dedicated video game time.

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { initDb } = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 const playerRoutes = require('./routes/playerRoutes');
 const habitRoutes = require('./routes/habitRoutes');
 
@@ -16,16 +17,21 @@ app.get('/', (req, res) => {
 });
 
 // Podłączenie ruterów (API Routes)
+app.use('/api', authRoutes);
 app.use('/api', playerRoutes);
 app.use('/api', habitRoutes);
 
-initDb()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Serwer działa na porcie ${PORT}`);
+if (require.main === module) {
+  initDb()
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`Serwer działa na porcie ${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error('Błąd inicjalizacji bazy danych:', err);
+      process.exit(1);
     });
-  })
-  .catch((err) => {
-    console.error('Błąd inicjalizacji bazy danych:', err);
-    process.exit(1);
-  });
+}
+
+module.exports = app;

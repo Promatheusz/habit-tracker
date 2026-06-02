@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const playerController = require('../controllers/playerController');
+const { authenticate } = require('../middleware/authMiddleware');
 
-router.get('/player', playerController.getPlayer);
-router.get('/rewards', playerController.getRewards);
-router.post('/player/purchase', playerController.purchaseReward);
+router.get('/player', authenticate, playerController.getPlayer);
+router.get('/rewards', authenticate, playerController.getRewards);
+router.get('/rewards/purchased', authenticate, playerController.getPurchasedRewards);
+router.post('/rewards/:id/buy', authenticate, playerController.purchaseReward);
+router.post('/player/purchase', authenticate, playerController.purchaseReward);
 
 module.exports = router;

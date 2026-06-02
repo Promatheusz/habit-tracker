@@ -1,20 +1,23 @@
 function TaskCard({ task, onComplete }) {
   return (
-    <div className="bg-gray-900 p-5 rounded-2xl flex justify-between items-center">
+    <div className="flex items-center justify-between rounded-lg bg-gray-900 p-5">
       <div>
-        <h3 className="text-white text-lg font-bold">{task.title}</h3>
+        <h3 className="text-lg font-bold text-white">{task.name || task.title}</h3>
 
-        <p className="text-yellow-400">+{task.xp} XP</p>
+        <p className="text-yellow-400">+{task.xp_reward || task.xp} XP</p>
+        <p className="text-sm capitalize text-gray-400">
+          {task.difficulty || 'easy'} / {task.frequency || 'daily'}
+        </p>
       </div>
 
       <button
-        disabled={task.completed}
+        disabled={task.completed || task.completed_today}
         onClick={() => onComplete(task.id)}
-        className={`px-4 py-2 rounded-xl text-white ${
-          task.completed ? 'bg-gray-700' : 'bg-green-500 hover:bg-green-600'
+        className={`rounded-lg px-4 py-2 text-white ${
+          task.completed || task.completed_today ? 'bg-gray-700' : 'bg-green-500 hover:bg-green-600'
         }`}
       >
-        {task.completed ? 'Done' : 'Complete'}
+        {task.completed || task.completed_today ? 'Done' : 'Complete'}
       </button>
     </div>
   );

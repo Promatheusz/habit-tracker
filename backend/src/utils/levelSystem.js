@@ -1,36 +1,63 @@
-/**
- * Oblicza próg punktów doświadczenia potrzebny do awansu.
- *
- * @param {number} level - Obecny poziom gracza.
- * @returns {number} Wymagane punkty doświadczenia do kolejnego poziomu.
- */
-function getXPForNextLevel(level) {
-  return level * 100;
+const LEVEL_THRESHOLDS = {
+  1: 0,
+  2: 100,
+  3: 250,
+  4: 500,
+  5: 1000,
+  6: 1500,
+  7: 2000,
+  8: 2500,
+  9: 3000,
+  10: 3500,
+};
+
+const DIFFICULTY_XP = {
+  easy: 10,
+  medium: 25,
+  hard: 50,
+};
+
+function getLevelForXP(totalXP) {
+  let level = 1;
+
+  Object.entries(LEVEL_THRESHOLDS).forEach(([candidateLevel, threshold]) => {
+    if (totalXP >= threshold) {
+      level = Number(candidateLevel);
+    }
+  });
+
+  return level;
 }
 
-/**
- * Dodaje doświadczenie i obsługuje awanse.
- *
- * @param {number} currentLevel - Obecny poziom.
- * @param {number} currentXP - Obecne punkty doświadczenia.
- * @param {number} xpToAdd - Doświadczenie do dodania.
- * @returns {{ level: number, xp: number, leveledUp: boolean }} Nowe parametry gracza.
- */
-function calculateLevelAndXP(currentLevel, currentXP, xpToAdd) {
-  let level = currentLevel;
-  let xp = currentXP + xpToAdd;
-  let leveledUp = false;
+function getXPForLevel(level) {
+  return LEVEL_THRESHOLDS[level] ?? LEVEL_THRESHOLDS[10];
+}
 
-  while (xp >= getXPForNextLevel(level)) {
-    xp -= getXPForNextLevel(level);
-    level += 1;
-    leveledUp = true;
-  }
+function getXPForNextLevel(level) {
+  return LEVEL_THRESHOLDS[level + 1] ?? LEVEL_THRESHOLDS[10];
+}
 
-  return { level, xp, leveledUp };
+function getXPRewardForDifficulty(difficulty) {
+  return DIFFICULTY_XP[difficulty] ?? DIFFICULTY_XP.easy;
+}
+
+function calculateLevelAndXP(currentXP, xpToAdd) {
+  const xp = currentXP + xpToAdd;
+  const level = getLevelForXP(xp);
+
+  return {
+    level,
+    xp,
+    leveledUp: level > getLevelForXP(currentXP),
+  };
 }
 
 module.exports = {
-  getXPForNextLevel,
+  DIFFICULTY_XP,
+  LEVEL_THRESHOLDS,
   calculateLevelAndXP,
+  getLevelForXP,
+  getXPForLevel,
+  getXPForNextLevel,
+  getXPRewardForDifficulty,
 };

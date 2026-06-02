@@ -1,22 +1,25 @@
-# Experience Points System
+# Functional and Non-Functional Requirements
 
-The progression mechanics are based on a task difficulty scale, ensuring that user effort is rewarded equitably. Every task is classified into one of three distinct categories:
+## Functional Requirements
 
-* **Easy Task:** Rewards ten experience points.
-* **Medium Task:** Rewards twenty-five experience points.
-* **Hard Task:** Rewards fifty experience points.
+* Users can register, log in, log out, and load their authenticated profile.
+* Users can create, view, update, complete, and deactivate habits.
+* Habits support a name, description, difficulty, frequency, weekly targets, XP reward, and currency reward.
+* Habit difficulty controls rewards: easy gives 10 XP, medium gives 25 XP, and hard gives 50 XP.
+* A habit can be completed only once per calendar day.
+* Completing a habit creates a completion log and updates player XP, level, and currency.
+* Player levels follow the documented RPG threshold matrix and are based on total XP.
+* Users can browse rewards available at their current level.
+* Users can purchase rewards when they have enough currency and have not bought the reward before.
+* Reward purchases subtract currency but never reduce total XP or player level.
+* Users can view purchased rewards and recent habit completion history.
 
-### Leveling Matrix
+## Non-Functional Requirements
 
-The system features ten baseline character levels. The total points required to level up scale progressively to maintain an optimal engagement curve and challenge level:
-
-* **Level 1:** Starting level.
-* **Level 2:** One hundred experience points.
-* **Level 3:** Two hundred and fifty experience points.
-* **Level 4:** Five hundred experience points.
-* **Level 5:** One thousand experience points.
-* **Subsequent Levels:** The threshold increases by five hundred points per tier up to level ten.
-
-### Reward Economy
-
-Experience points simultaneously function as the in-app virtual currency. Users can choose to spend accumulated resources in the store, which deducts the corresponding points from their balance without downgrading their current character level. Sample rewards include visual bonuses, unlockable profile icons, or custom, user-defined real-world incentives, such as a coffee break or dedicated video game time.
+* The application runs as a Dockerized React frontend and Express backend.
+* The backend stores data in SQLite and protects user-specific data through authentication.
+* API responses use consistent JSON success and error payloads.
+* The UI is responsive for desktop and mobile use.
+* The project includes Mermaid Markdown diagrams as the maintainable source for UML and architecture documentation.
+* The codebase includes linting and test scripts for backend and frontend verification.
+* Seed data supports a demo login for presentation and testing.

@@ -1,4 +1,12 @@
 import { FaHome, FaTasks, FaTrophy, FaUser } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+
+const links = [
+  { to: '/', label: 'Dashboard', icon: FaHome },
+  { to: '/habits', label: 'Habits', icon: FaTasks },
+  { to: '/rewards', label: 'Rewards', icon: FaTrophy },
+  { to: '/profile', label: 'Profile', icon: FaUser },
+];
 
 function Sidebar() {
   return (
@@ -6,25 +14,23 @@ function Sidebar() {
       <h2 className="text-3xl font-bold mb-10 text-yellow-400">Habit RPG</h2>
 
       <nav className="flex flex-col gap-4">
-        <button className="flex items-center gap-3 hover:bg-gray-800 p-3 rounded-xl transition">
-          <FaHome />
-          Dashboard
-        </button>
-
-        <button className="flex items-center gap-3 hover:bg-gray-800 p-3 rounded-xl transition">
-          <FaTasks />
-          Tasks
-        </button>
-
-        <button className="flex items-center gap-3 hover:bg-gray-800 p-3 rounded-xl transition">
-          <FaTrophy />
-          Rewards
-        </button>
-
-        <button className="flex items-center gap-3 hover:bg-gray-800 p-3 rounded-xl transition">
-          <FaUser />
-          Profile
-        </button>
+        {links.map((link) => {
+          const Icon = link.icon;
+          return (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `flex items-center gap-3 rounded-lg p-3 transition ${
+                  isActive ? 'bg-gray-800 text-yellow-300' : 'hover:bg-gray-800'
+                }`
+              }
+            >
+              <Icon />
+              {link.label}
+            </NavLink>
+          );
+        })}
       </nav>
     </aside>
   );

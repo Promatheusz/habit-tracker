@@ -1,8 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
+const { hashPassword } = require('../utils/auth');
+const { getLevelForXP, getXPRewardForDifficulty } = require('../utils/levelSystem');
 
-const dbPath = path.resolve(__dirname, '../../database/database.sqlite');
+const dbPath = process.env.DB_PATH
+  ? path.resolve(process.env.DB_PATH)
+  : path.resolve(__dirname, '../../database/database.sqlite');
 const dbDir = path.dirname(dbPath);
 
 if (!fs.existsSync(dbDir)) {
@@ -29,6 +33,7 @@ function initDb() {
           return reject(err);
         }
         try {
+          await migrateDb();
           await seedData();
           resolve();
         } catch (seedErr) {
@@ -66,32 +71,100 @@ const dbQuery = {
   },
 };
 
+function closeDb() {
+  return new Promise((resolve, reject) => {
+    db.close((err) => {
+      if (err) reject(err);
+      else resolve();
+    });
+  });
+}
+
+async function columnExists(table, column) {
+  const columns = await dbQuery.all(`PRAGMA table_info(${table})`);
+  return columns.some((entry) => entry.name === column);
+}
+
+async function migrateDb() {
+  if (!(await columnExists('habits', 'difficulty'))) {
+    await dbQuery.run(
+      "ALTER TABLE habits ADD COLUMN difficulty TEXT NOT NULL DEFAULT 'easy' CHECK (difficulty IN ('easy', 'medium', 'hard'))",
+    );
+  }
+
+  const habits = await dbQuery.all('SELECT id, difficulty FROM habits');
+  await Promise.all(
+    habits.map((habit) =>
+      dbQuery.run('UPDATE habits SET xp_reward = ?, currency_reward = ? WHERE id = ?', [
+        getXPRewardForDifficulty(habit.difficulty),
+        getXPRewardForDifficulty(habit.difficulty),
+        habit.id,
+      ]),
+    ),
+  );
+
+  const players = await dbQuery.all('SELECT id, xp FROM players');
+  await Promise.all(
+    players.map((player) =>
+      dbQuery.run('UPDATE players SET level = ? WHERE id = ?', [
+        getLevelForXP(player.xp || 0),
+        player.id,
+      ]),
+    ),
+  );
+}
+
 async function seedData() {
-  const count = await dbQuery.get('SELECT COUNT(*) as total FROM players');
-  if (count.total === 0) {
+  const placeholder = await dbQuery.get('SELECT id FROM players WHERE username = ?', [
+    'PlaceholderUser',
+  ]);
+  if (placeholder) {
+    await dbQuery.run('UPDATE players SET username = ?, password = ? WHERE id = ?', [
+      'demo',
+      hashPassword('password'),
+      placeholder.id,
+    ]);
+  }
+
+  const demoUser = await dbQuery.get('SELECT id FROM players WHERE username = ?', ['demo']);
+  if (!demoUser) {
     await dbQuery.run(
       `INSERT INTO players (id, username, password, xp, level, currency)
-       VALUES (1, 'PlaceholderUser', 'placeholder_hash', 195, 2, 20)`,
+       VALUES (1, 'demo', ?, 250, 3, 120)
+       ON CONFLICT(id) DO NOTHING`,
+      [hashPassword('password')],
     );
+  }
+
+  const count = await dbQuery.get('SELECT COUNT(*) as total FROM habits');
+  if (count.total === 0) {
     await dbQuery.run(
-      `INSERT INTO habits (player_id, name, description, frequency, xp_reward, currency_reward)
+      `INSERT INTO habits (player_id, name, description, difficulty, frequency, xp_reward, currency_reward)
        VALUES 
-       (1, 'Workout', 'Daily physical exercise', 'daily', 20, 5),
-       (1, 'Read 20 Pages', 'Read a non-fiction book', 'daily', 15, 5),
-       (1, 'Study React', 'Learn hooks and routing', 'daily', 25, 10)`,
+       (1, 'Workout', 'Daily physical exercise', 'medium', 'daily', 25, 25),
+       (1, 'Read 20 Pages', 'Read a non-fiction book', 'easy', 'daily', 10, 10),
+       (1, 'Study React', 'Learn hooks and routing', 'medium', 'weekly', 25, 25)`,
     );
+  }
+
+  const rewardCount = await dbQuery.get('SELECT COUNT(*) as total FROM rewards');
+  if (rewardCount.total === 0) {
     await dbQuery.run(
       `INSERT INTO rewards (name, description, cost, required_level)
        VALUES 
-       ('Play Console Games (1h)', 'Relaxing gameplay', 15, 1),
-       ('Watch a Movie', 'Evening cinema', 25, 1)`,
+       ('Coffee Break', 'A focused reset after a productive session', 25, 1),
+       ('Play Console Games (1h)', 'Relaxing gameplay', 50, 2),
+       ('Watch a Movie', 'Evening cinema', 80, 3),
+       ('Custom Profile Icon', 'Unlock a visual profile bonus', 120, 4)`,
     );
-    console.log('Zasilono bazę danych danymi startowymi.');
   }
+
+  console.log('Zasilono bazę danych danymi startowymi.');
 }
 
 module.exports = {
   db,
+  closeDb,
   initDb,
   ...dbQuery,
 };

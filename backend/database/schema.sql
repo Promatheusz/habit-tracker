@@ -39,12 +39,14 @@ CREATE TABLE IF NOT EXISTS habits (
     player_id            INTEGER NOT NULL REFERENCES players(id) ON DELETE CASCADE,
     name                 TEXT    NOT NULL,
     description          TEXT,
+    difficulty           TEXT    NOT NULL DEFAULT 'easy'
+                         CHECK (difficulty IN ('easy', 'medium', 'hard')),
     frequency            TEXT    NOT NULL DEFAULT 'daily'
                          CHECK (frequency IN ('daily', 'weekly', 'one-time')),
     target_days_of_week  TEXT,   -- np. '1,3,5' = pon, śr, pt (dla weekly)
     target_days_per_week INTEGER,-- np. 3 = 3x w tygodniu (dla weekly)
     xp_reward            INTEGER NOT NULL DEFAULT 10,
-    currency_reward      INTEGER NOT NULL DEFAULT 5,
+    currency_reward      INTEGER NOT NULL DEFAULT 10,
     is_active            INTEGER NOT NULL DEFAULT 1,  -- 0 = usunięty
     created_at           TEXT    NOT NULL DEFAULT (datetime('now'))
 );

@@ -11,6 +11,7 @@ flowchart LR
         register(("Account registration"))
         login(("Log in to the system"))
         addHabit(("Add habit"))
+        editHabit(("Edit habit"))
         browseHabits(("Browse habits"))
         completeHabit(("Mark habit<br/>as completed"))
         earn(("Earn XP<br/>and currency"))
@@ -24,6 +25,7 @@ flowchart LR
     guest --> login
 
     player --> addHabit
+    player --> editHabit
     player --> browseHabits
     player --> completeHabit
     player --> deleteHabit
@@ -40,5 +42,5 @@ flowchart LR
 
     class guest,player actor;
     class register,login auth;
-    class addHabit,browseHabits,completeHabit,earn,levelUp,deleteHabit,buyReward,browseRewards usecase;
+    class addHabit,editHabit,browseHabits,completeHabit,earn,levelUp,deleteHabit,buyReward,browseRewards usecase;
 ```
