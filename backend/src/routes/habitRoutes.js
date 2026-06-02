@@ -10,7 +10,4 @@ router.delete('/habits/:id', authenticate, habitController.deleteHabit);
 router.post('/habits/:id/complete', authenticate, habitController.completeHabit);
 router.get('/habit-logs', authenticate, habitController.getHabitLogs);
 
-router.get('/player/habits', authenticate, habitController.getHabits);
-router.post('/player/habits', authenticate, habitController.createHabit);
-
 module.exports = router;

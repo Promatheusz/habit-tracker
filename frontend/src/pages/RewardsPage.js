@@ -64,6 +64,13 @@ function RewardsPage() {
           )}
           {rewards.map((reward) => (
             <div key={reward.id} className="rounded-lg bg-gray-900 p-5">
+              {reward.image_url && (
+                <img
+                  src={reward.image_url}
+                  alt=""
+                  className="mb-4 h-36 w-full rounded-lg object-cover"
+                />
+              )}
               <h2 className="text-xl font-bold text-white">{reward.name}</h2>
               <p className="mt-2 text-gray-400">{reward.description}</p>
               <p className="mt-3 text-sm text-yellow-300">

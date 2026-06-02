@@ -202,11 +202,23 @@ Backend tests cover:
 * XP reward mapping.
 * Level threshold calculations.
 * User registration.
+* Login success and failure.
+* Authenticated profile lookup.
 * Habit creation and completion.
+* Habit editing and soft-delete.
 * Duplicate same-day completion rejection.
+* Successful reward purchase.
+* Duplicate reward purchase rejection.
 * Reward purchase rejection when balance is too low.
 
-Frontend tests cover API service authentication state behavior.
+Frontend tests cover:
+
+* API service authentication state behavior.
+* Protected route redirects.
+* Logout navigation behavior.
+* Habit create/update form submissions.
+* Invalid weekly habit form messaging.
+* Reward buy button disabled state when currency is too low.
 
 Related diagram: [testing-strategy-diagram.md](diagrams/testing-strategy-diagram.md).
 

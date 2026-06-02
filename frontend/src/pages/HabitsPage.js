@@ -60,6 +60,14 @@ function HabitsPage() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setError('');
+    setMessage('');
+
+    if (form.frequency === 'weekly' && !form.target_days_of_week && !form.target_days_per_week) {
+      setError('Weekly habits need target weekdays or a target number of days per week.');
+      return;
+    }
+
     try {
       if (editingId) {
         await updateHabit(editingId, form);
@@ -171,8 +179,17 @@ function HabitsPage() {
                   <h2 className="text-xl font-bold text-white">{habit.name}</h2>
                   <p className="text-gray-400">{habit.description || 'No description'}</p>
                   <p className="mt-2 text-sm capitalize text-yellow-300">
-                    {habit.difficulty} / {habit.frequency} / +{habit.xp_reward} XP
+                    {habit.difficulty} / {habit.frequency} / +{habit.xp_reward} XP / +
+                    {habit.currency_reward} currency
                   </p>
+                  {habit.frequency === 'weekly' && (
+                    <p className="mt-1 text-sm text-gray-500">
+                      Target:{' '}
+                      {habit.target_days_of_week
+                        ? `weekdays ${habit.target_days_of_week}`
+                        : `${habit.target_days_per_week} days per week`}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <button

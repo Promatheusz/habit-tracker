@@ -7,6 +7,5 @@ router.get('/player', authenticate, playerController.getPlayer);
 router.get('/rewards', authenticate, playerController.getRewards);
 router.get('/rewards/purchased', authenticate, playerController.getPurchasedRewards);
 router.post('/rewards/:id/buy', authenticate, playerController.purchaseReward);
-router.post('/player/purchase', authenticate, playerController.purchaseReward);
 
 module.exports = router;

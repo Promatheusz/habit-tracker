@@ -7,7 +7,7 @@ import HabitsPage from './pages/HabitsPage';
 import ProfilePage from './pages/ProfilePage';
 import RewardsPage from './pages/RewardsPage';
 
-function ProtectedRoute({ children }) {
+export function ProtectedRoute({ children }) {
   return isAuthenticated() ? children : <Navigate to="/login" replace />;
 }
 
