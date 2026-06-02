@@ -1,5 +1,9 @@
 # High-Level Design
 
+## Purpose
+
+This diagram documents the core client-server architecture of the Habit Tracker RPG system.
+
 ## Architecture Overview
 
 The Habit Tracker RPG system is a client-server web application. The React frontend provides authenticated screens for player progress, habit management, reward purchases, and profile history. The Express backend exposes JSON APIs, validates requests, applies RPG rules, and persists state in SQLite.

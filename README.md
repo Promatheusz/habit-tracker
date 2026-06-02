@@ -29,35 +29,11 @@ git clone <repository-url>
 
 The frontend is available at `http://localhost:3000`. The backend API is mapped to `http://localhost:5001`.
 
-### API Endpoints
-
-| Method | Path | Description |
-| --- | --- | --- |
-| `POST` | `/api/auth/register` | Create a player account |
-| `POST` | `/api/auth/login` | Log in and receive a bearer token |
-| `GET` | `/api/auth/me` | Load the authenticated player |
-| `GET` | `/api/player` | Load player stats |
-| `GET` | `/api/habits` | List active habits |
-| `POST` | `/api/habits` | Create a habit |
-| `PUT` | `/api/habits/:id` | Update a habit |
-| `DELETE` | `/api/habits/:id` | Deactivate a habit |
-| `POST` | `/api/habits/:id/complete` | Complete a habit for XP and currency |
-| `GET` | `/api/habit-logs` | List recent completion history |
-| `GET` | `/api/rewards` | List level-available rewards |
-| `POST` | `/api/rewards/:id/buy` | Purchase a reward |
-| `GET` | `/api/rewards/purchased` | List purchased rewards |
-
 ### Documentation And Diagrams
 
 Project documentation is stored in `/docs`. Mermaid Markdown diagrams in `/docs/diagrams` are the source of truth for UML and architecture deliverables.
 
-Key documents:
-
-* `docs/High-Level Design.md`
-* `docs/Database ERD.md`
-* `docs/GUI Wireframes.md`
-* `docs/Functional and Non-Functional Requirements.md`
-* `docs/RPG mechanics.md`
+Open the full documentation index here: [`docs/README.md`](docs/README.md).
 
 #### 3. Working with code (Push & Pull Request)
 

@@ -1,25 +1,45 @@
-# Functional and Non-Functional Requirements
+# Functional And Non-Functional Requirements
+
+This document defines the app behavior in numbered requirements. Implementation and test details are summarized in [Developer Handbook.md](Developer%20Handbook.md).
 
 ## Functional Requirements
 
-* Users can register, log in, log out, and load their authenticated profile.
-* Users can create, view, update, complete, and deactivate habits.
-* Habits support a name, description, difficulty, frequency, weekly targets, XP reward, and currency reward.
-* Habit difficulty controls rewards: easy gives 10 XP, medium gives 25 XP, and hard gives 50 XP.
-* A habit can be completed only once per calendar day.
-* Completing a habit creates a completion log and updates player XP, level, and currency.
-* Player levels follow the documented RPG threshold matrix and are based on total XP.
-* Users can browse rewards available at their current level.
-* Users can purchase rewards when they have enough currency and have not bought the reward before.
-* Reward purchases subtract currency but never reduce total XP or player level.
-* Users can view purchased rewards and recent habit completion history.
+| ID | Requirement |
+| --- | --- |
+| `FR-01` | A user can register, log in, log out, and load an authenticated profile. |
+| `FR-02` | An authenticated user can create, view, edit, and soft-delete their own habits. |
+| `FR-03` | A habit supports name, description, difficulty, frequency, weekly targets, XP reward, and currency reward. |
+| `FR-04` | An authenticated user can complete an active habit once per calendar day. |
+| `FR-05` | Completing a habit creates a completion log. |
+| `FR-06` | Completing a habit grants XP and currency according to difficulty. |
+| `FR-07` | Player level is calculated from total XP thresholds. |
+| `FR-08` | An authenticated user can view recent habit completion history. |
+| `FR-09` | An authenticated user can browse rewards available at their current level. |
+| `FR-10` | An authenticated user can buy a reward when they have enough currency. |
+| `FR-11` | A reward can be purchased only once by the same player. |
+| `FR-12` | Buying a reward deducts currency but never reduces XP or level. |
+| `FR-13` | An authenticated user can view purchased rewards in their profile. |
+| `FR-14` | The app provides demo seed data for presentation. |
 
 ## Non-Functional Requirements
 
-* The application runs as a Dockerized React frontend and Express backend.
-* The backend stores data in SQLite and protects user-specific data through authentication.
-* API responses use consistent JSON success and error payloads.
-* The UI is responsive for desktop and mobile use.
-* The project includes Mermaid Markdown diagrams as the maintainable source for UML and architecture documentation.
-* The codebase includes linting and test scripts for backend and frontend verification.
-* Seed data supports a demo login for presentation and testing.
+| ID | Requirement |
+| --- | --- |
+| `NFR-01` | The app runs as a Dockerized React frontend and Express backend. |
+| `NFR-02` | The backend persists data in SQLite. |
+| `NFR-03` | User-specific data is protected by authentication middleware. |
+| `NFR-04` | API success and error responses are JSON. |
+| `NFR-05` | The frontend is responsive for desktop and mobile workflows. |
+| `NFR-06` | Mermaid Markdown diagrams are the source of truth for diagrams. |
+| `NFR-07` | Backend and frontend include lint scripts. |
+| `NFR-08` | Core backend and frontend behavior is covered by automated tests. |
+| `NFR-09` | The app can be started consistently with Docker Compose. |
+| `NFR-10` | Documentation supports developer handoff and final presentation. |
+
+## Related Documentation
+
+* [RPG mechanics.md](RPG%20mechanics.md)
+* [Developer Handbook.md](Developer%20Handbook.md)
+* [Project Handoff.md](Project%20Handoff.md)
+* [api-flow-diagram.md](diagrams/api-flow-diagram.md)
+* [error-handling-flow.md](diagrams/error-handling-flow.md)

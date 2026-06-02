@@ -1,5 +1,9 @@
 # Deployment Diagram - Docker Runtime
 
+## Purpose
+
+This diagram shows the local Docker Compose runtime with frontend, backend, and persistent SQLite storage.
+
 ```mermaid
 flowchart TB
     user["User Browser"]

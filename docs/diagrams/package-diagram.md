@@ -1,5 +1,9 @@
 # Package Diagram - Application Structure
 
+## Purpose
+
+This diagram shows the main source-code packages and how frontend, backend, and database files relate to each other.
+
 ```mermaid
 flowchart TB
     subgraph frontend[frontend/src]

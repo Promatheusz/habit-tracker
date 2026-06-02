@@ -1,5 +1,9 @@
 # Communication Diagram - Reward Purchase
 
+## Purpose
+
+This diagram shows object-level communication between the player, frontend, backend, auth middleware, and database during reward purchase.
+
 ```mermaid
 flowchart LR
     player["1 Player"]

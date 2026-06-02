@@ -1,5 +1,9 @@
 # State Machine Diagram - Habit Lifecycle
 
+## Purpose
+
+This state machine documents how a habit moves between active, completed-today, edited, and inactive states.
+
 ```mermaid
 stateDiagram-v2
     [*] --> Active: create habit

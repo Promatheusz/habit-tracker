@@ -1,5 +1,9 @@
 # Use Case Diagram - Authentication and Profile
 
+## Purpose
+
+This diagram focuses on authentication, profile viewing, completion history, and purchased reward history.
+
 ```mermaid
 flowchart LR
     guest["Guest"]

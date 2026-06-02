@@ -1,5 +1,7 @@
 # Class Diagram - Habit Tracker
 
+## Purpose
+
 This diagram presents the Habit Tracker data structure. It shows players, habits, completion logs, rewards, and purchased rewards with their main fields and relationships.
 
 ```mermaid

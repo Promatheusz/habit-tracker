@@ -1,22 +1,88 @@
-# Experience Points System
+# RPG Mechanics
 
-The progression mechanics are based on a task difficulty scale, ensuring that user effort is rewarded equitably. Every task is classified into one of three distinct categories:
+This document is the source of truth for XP, level, currency, and reward rules. Implementation details are in `backend/src/utils/levelSystem.js`.
 
-* **Easy Task:** Rewards ten experience points.
-* **Medium Task:** Rewards twenty-five experience points.
-* **Hard Task:** Rewards fifty experience points.
+## Difficulty Rewards
 
-### Leveling Matrix
+Every habit has a difficulty. Difficulty controls both XP and currency rewards.
 
-The system features ten baseline character levels. The total points required to level up scale progressively to maintain an optimal engagement curve and challenge level:
+| Difficulty | XP Reward | Currency Reward |
+| --- | ---: | ---: |
+| Easy | 10 | 10 |
+| Medium | 25 | 25 |
+| Hard | 50 | 50 |
 
-* **Level 1:** Starting level.
-* **Level 2:** One hundred experience points.
-* **Level 3:** Two hundred and fifty experience points.
-* **Level 4:** Five hundred experience points.
-* **Level 5:** One thousand experience points.
-* **Subsequent Levels:** The threshold increases by five hundred points per tier up to level ten.
+## Level Thresholds
 
-### Reward Economy
+Level is calculated from total XP. XP is never spent.
 
-The app stores total experience points separately from spendable currency. Completing habits increases both totals using the habit difficulty reward. Level progression is calculated from total XP, while reward purchases deduct only currency. This means buying a reward never downgrades the current character level. Sample rewards include visual bonuses, unlockable profile icons, or custom, user-defined real-world incentives, such as a coffee break or dedicated video game time.
+| Level | Total XP Required |
+| --- | ---: |
+| 1 | 0 |
+| 2 | 100 |
+| 3 | 250 |
+| 4 | 500 |
+| 5 | 1000 |
+| 6 | 1500 |
+| 7 | 2000 |
+| 8 | 2500 |
+| 9 | 3000 |
+| 10 | 3500 |
+
+## Currency Rules
+
+Currency is separate from XP:
+
+* Completing habits increases XP and currency.
+* Buying rewards deducts currency only.
+* Buying rewards does not reduce total XP.
+* Buying rewards does not downgrade player level.
+
+## Duplicate Completion Rule
+
+Each habit can be completed once per calendar day. A second completion attempt on the same day returns an error and grants no XP or currency.
+
+## Examples
+
+### Medium Habit Completion
+
+Starting state:
+
+* XP: 90
+* Level: 1
+* Currency: 20
+
+Action:
+
+* Complete one medium habit.
+
+Result:
+
+* XP: 115
+* Level: 2
+* Currency: 45
+
+### Reward Purchase
+
+Starting state:
+
+* XP: 115
+* Level: 2
+* Currency: 45
+
+Action:
+
+* Buy a reward that costs 25 currency.
+
+Result:
+
+* XP: 115
+* Level: 2
+* Currency: 20
+
+## Related Diagrams
+
+* [xp-leveling-state.md](diagrams/xp-leveling-state.md)
+* [reward-lifecycle-state.md](diagrams/reward-lifecycle-state.md)
+* [activity-habit.md](diagrams/activity-habit.md)
+* [activity-reward.md](diagrams/activity-reward.md)

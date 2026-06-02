@@ -1,38 +1,52 @@
-# Requirements List
+# Project Requirements
 
-### Team Composition and Organization
+This document is the authoritative project-deliverables checklist. Detailed functional behavior is documented in [Functional and Non-Functional Requirements.md](Functional%20and%20Non-Functional%20Requirements.md).
 
-* **Team Structure:** The project is executed in a group of four members according to a selected project management methodology.
-* **Project Objective:** Formulating a concept for an IT solution based on identified market needs.
+## Team And Project Organization
 
-### Microsoft Word Documentation Requirements
+| Requirement | Status | Evidence |
+| --- | --- | --- |
+| Team project with defined roles and workflow | Prepared | [CONTRIBUTING.md](../CONTRIBUTING.md) |
+| Project objective based on market need | Complete | [Project Objective and Market Analysis.md](Project%20Objective%20and%20Market%20Analysis.md) |
+| Final presentation support | Complete | [Project Handoff.md](Project%20Handoff.md) |
 
-The comprehensive documentation must encompass the following components:
+## Documentation Deliverables
 
-* Project objective and scope.
-* Functional and non-functional requirements.
-* High-Level Design (HLD), including the overall solution architecture, a component diagram with accompanying descriptions, and data flow descriptions between system components.
-* Database schema and entity-relationship models.
-* Graphical User Interface (GUI) wireframes and design.
+| Requirement | Status | Evidence |
+| --- | --- | --- |
+| Project objective and scope | Complete | [Project Objective and Market Analysis.md](Project%20Objective%20and%20Market%20Analysis.md) |
+| Functional and non-functional requirements | Complete | [Functional and Non-Functional Requirements.md](Functional%20and%20Non-Functional%20Requirements.md) |
+| High-level design | Complete | [high-level-design.md](diagrams/high-level-design.md), [Developer Handbook.md](Developer%20Handbook.md) |
+| Component/package description | Complete | [package-diagram.md](diagrams/package-diagram.md) |
+| Data flow descriptions | Complete | [api-flow-diagram.md](diagrams/api-flow-diagram.md) |
+| Database schema and ERD | Complete | [database-erd.md](diagrams/database-erd.md) |
+| GUI wireframes | Complete | [gui-wireframes.md](diagrams/gui-wireframes.md) |
+| Developer setup and test guide | Complete | [Developer Handbook.md](Developer%20Handbook.md) |
 
-### Low-Level Design (LLD) Requirements
+## UML And Diagram Deliverables
 
-A comprehensive suite of UML diagrams utilizing standard notation, complete with detailed descriptions for each:
+Mermaid Markdown files in `docs/diagrams` are the diagram source of truth.
 
-* A minimum of two Use Case Diagrams.
-* Class Diagrams detailing attributes, methods, and relationships.
-* A minimum of two Sequence Diagrams for core operational workflows.
-* Object Diagrams, alternatively referred to as Communication or Collaboration Diagrams.
-* A minimum of two Activity Diagrams depicting procedural logic.
-* State Machine Diagrams modeling lifecycle transitions.
-* Package Diagrams showcasing structural architecture.
-* Deployment Diagrams representing physical infrastructure mapping.
+| Requirement | Evidence |
+| --- | --- |
+| Use case diagrams | [use-case-diagram.md](diagrams/use-case-diagram.md), [use-case-auth-profile.md](diagrams/use-case-auth-profile.md) |
+| Class diagram | [class-diagram.md](diagrams/class-diagram.md) |
+| Sequence diagrams | [sequence-habit.md](diagrams/sequence-habit.md), [sequence-reward.md](diagrams/sequence-reward.md), [auth-sequence.md](diagrams/auth-sequence.md), [habit-crud-sequence.md](diagrams/habit-crud-sequence.md) |
+| Activity diagrams | [activity-habit.md](diagrams/activity-habit.md), [activity-reward.md](diagrams/activity-reward.md) |
+| Communication diagram | [communication-reward-purchase.md](diagrams/communication-reward-purchase.md) |
+| State machine diagrams | [state-machine-habit.md](diagrams/state-machine-habit.md), [xp-leveling-state.md](diagrams/xp-leveling-state.md), [reward-lifecycle-state.md](diagrams/reward-lifecycle-state.md) |
+| Package diagram | [package-diagram.md](diagrams/package-diagram.md) |
+| Deployment diagram | [deployment-diagram.md](diagrams/deployment-diagram.md) |
 
-### Implementation Deliverables
+## Implementation Deliverables
 
-* Iterative prototypes of the solution developed sequentially throughout the project lifecycle.
-* The finalized production-ready codebase executed using the selected technology stack and engineering tools.
-
-### Presentation of Results
-
-* A formal final defense and presentation of the project outcomes delivered in the lecture hall utilizing a workstation and multimedia projector.
+| Requirement | Status | Evidence |
+| --- | --- | --- |
+| React frontend | Complete | `frontend/src` |
+| Express backend | Complete | `backend/src` |
+| SQLite schema | Complete | `backend/database/schema.sql` |
+| Authentication | Complete | `backend/src/controllers/authController.js` |
+| Habit management | Complete | `backend/src/controllers/habitController.js` |
+| Reward shop | Complete | `backend/src/controllers/playerController.js` |
+| RPG mechanics | Complete | [RPG mechanics.md](RPG%20mechanics.md), `backend/src/utils/levelSystem.js` |
+| Tests and quality checks | Complete | [Developer Handbook.md](Developer%20Handbook.md) |
