@@ -12,18 +12,18 @@ sequenceDiagram
     participant DB as Database (SQLite)
 
     Player->>Frontend: 1. Open reward shop
-    Frontend->>Backend: 2. GET /rewards
-    Backend->>DB: 3. SELECT * FROM rewards WHERE required_level <= :level
+    Frontend->>Backend: 2. GET /api/rewards
+    Backend->>DB: 3. SELECT rewards with purchase state WHERE required_level <= :level
     DB-->>Backend: 4. reward list
     Backend-->>Frontend: 5. 200 OK {rewards[]}
     Frontend-->>Player: 6. Display available rewards
 
     Player->>Frontend: 7. Click Buy reward
     Frontend->>Backend: 8. POST /api/rewards/:id/buy
-    Backend->>DB: 9. SELECT currency FROM player
+    Backend->>DB: 9. SELECT currency FROM players
     DB-->>Backend: 10. currency value
-    Backend->>DB: 11. If currency is enough UPDATE player SET currency=currency-:cost
-    Backend->>DB: 12. INSERT INTO player_rewards
-    Backend-->>Frontend: 13. 200 OK {success, new_currency}
+    Backend->>DB: 11. INSERT INTO player_rewards
+    Backend->>DB: 12. UPDATE players SET currency=currency-:cost
+    Backend-->>Frontend: 13. 200 OK {reward, player}
     Frontend-->>Player: 14. Display purchase confirmation
 ```

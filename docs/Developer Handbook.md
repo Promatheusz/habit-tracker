@@ -74,23 +74,21 @@ Related diagram: [auth-sequence.md](diagrams/auth-sequence.md).
 
 ## API Reference
 
-All endpoints are prefixed with `/api`.
-
 | Method | Path | Auth | Description |
 | --- | --- | --- | --- |
-| `POST` | `/auth/register` | No | Create a player account |
-| `POST` | `/auth/login` | No | Log in and receive a token |
-| `GET` | `/auth/me` | Yes | Load authenticated player |
-| `GET` | `/player` | Yes | Load player stats |
-| `GET` | `/habits` | Yes | List active habits |
-| `POST` | `/habits` | Yes | Create a habit |
-| `PUT` | `/habits/:id` | Yes | Update a habit |
-| `DELETE` | `/habits/:id` | Yes | Soft-delete a habit |
-| `POST` | `/habits/:id/complete` | Yes | Complete a habit |
-| `GET` | `/habit-logs` | Yes | List recent completions |
-| `GET` | `/rewards` | Yes | List rewards available for the current level |
-| `POST` | `/rewards/:id/buy` | Yes | Buy a reward |
-| `GET` | `/rewards/purchased` | Yes | List purchased rewards |
+| `POST` | `/api/auth/register` | No | Create a player account |
+| `POST` | `/api/auth/login` | No | Log in and receive a token |
+| `GET` | `/api/auth/me` | Yes | Load authenticated player |
+| `GET` | `/api/player` | Yes | Load player stats |
+| `GET` | `/api/habits` | Yes | List active habits |
+| `POST` | `/api/habits` | Yes | Create a habit |
+| `PUT` | `/api/habits/:id` | Yes | Update a habit |
+| `DELETE` | `/api/habits/:id` | Yes | Soft-delete a habit |
+| `POST` | `/api/habits/:id/complete` | Yes | Complete a habit |
+| `GET` | `/api/habit-logs` | Yes | List recent completions |
+| `GET` | `/api/rewards` | Yes | List rewards available for the current level |
+| `POST` | `/api/rewards/:id/buy` | Yes | Buy a reward |
+| `GET` | `/api/rewards/purchased` | Yes | List purchased rewards |
 
 Create habit request:
 

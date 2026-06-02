@@ -14,8 +14,8 @@ flowchart TD
     low["Show error:<br/>Not enough currency"]
     bought{"Has the reward<br/>already been bought?"}
     duplicate["Show error:<br/>Reward already purchased"]
-    subtract["Subtract currency from player"]
     save["Save purchase in player_rewards"]
+    subtract["Subtract currency from player"]
     confirm["Show purchase confirmation"]
     stop(( ))
 
@@ -23,7 +23,7 @@ flowchart TD
     currency -- NO --> low
     currency -- YES --> bought
     bought -- YES --> duplicate
-    bought -- NO --> subtract --> save --> confirm --> stop
+    bought -- NO --> save --> subtract --> confirm --> stop
 
     classDef startEnd fill:#000,stroke:#000,color:#000;
     classDef action fill:#d7e6fb,stroke:#6d95cf,color:#000;

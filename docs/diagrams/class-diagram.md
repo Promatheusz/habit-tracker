@@ -28,7 +28,7 @@ classDiagram
         +TEXT target_days_of_week
         +INTEGER target_days_per_week
         +INTEGER xp_reward = 10
-        +INTEGER currency_reward = 5
+        +INTEGER currency_reward = 10
         +INTEGER is_active = 1
         +TEXT created_at
     }

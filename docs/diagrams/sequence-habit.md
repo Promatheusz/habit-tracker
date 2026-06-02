@@ -17,10 +17,10 @@ sequenceDiagram
     DB-->>Backend: 4. habit data
     Backend->>DB: 5. Check no same-day habit_logs entry exists
     Backend->>DB: 6. INSERT INTO habit_logs
-    Backend->>DB: 7. UPDATE player SET xp=xp+:xp, currency=currency+:cur
-    Backend->>DB: 8. SELECT xp, level FROM player
+    Backend->>DB: 7. UPDATE players SET xp=xp+:xp, currency=currency+:cur
+    Backend->>DB: 8. SELECT xp, level FROM players
     DB-->>Backend: 8b. player data
-    Backend->>DB: 9. If XP is enough UPDATE player SET level=:level
-    Backend-->>Frontend: 10. 200 OK {xp, level, currency}
+    Backend->>DB: 9. If XP is enough UPDATE players SET level=:level
+    Backend-->>Frontend: 10. 200 OK {habit, player}
     Frontend-->>Player: 11. Update XP bar and player level
 ```
