@@ -1,36 +1,38 @@
-# 🛡️ Grywalizacja Rozwoju Osobistego
+# 🛡️ Gamification of Personal Development
 
-Projekt to system do grywalizacji rozwoju osobistego oparty na mechanice RPG. Użytkownicy zdobywają punkty doświadczenia i nagrody za realizację codziennych zadań oraz nawyków. System wykorzystuje frontend w React oraz backend w Node.js z bazą danych SQLite. Celem aplikacji jest wsparcie użytkowników w osiąganiu celów poprzez angażujące elementy znane z gier.
+The project is a system for the gamification of personal development based on RPG mechanics. Users earn experience points and rewards for completing daily tasks and habits. The system utilizes a React frontend and a Node.js backend with an SQLite database. The objective of the application is to support users in achieving their goals through engaging elements known from video games.
 
----
+### 🛠️ Technologies
 
-### 🛠️ Technologie
-
-| Obszar | Technologia |
-| :--- | :--- |
-| **Język** | JavaScript |
+| Area | Technology |
+| --- | --- |
+| **Language** | JavaScript |
 | **Frontend** | React.js + Tailwind CSS |
 | **Backend** | Node.js + Express |
-| **Baza danych** | SQLite |
-| **Narzędzia** | Git, Docker, ESLint, Prettier |
+| **Database** | SQLite |
+| **Tools** | Git, Docker, ESLint, Prettier |
 
----
+### 🚀 Project Operation
 
-### 🚀 Obsługa Projektu
+#### 1. Cloning the repository
 
-#### 1. Klonowanie repozytorium
 ```bash
-git clone <url-repozytorium>
+# Clone the remote repository to the local environment
+git clone <repository-url>
 ```
 
-#### 2. Uruchamianie i wyłączanie kontenerów
-*   **Start systemu:** `docker-compose up --build`
-*   **Zatrzymanie systemu:** `docker-compose down`
+#### 2. Starting and stopping containers
 
-#### 3. Praca z kodem (Push & Pull Request)
-*   **Wysłanie zmian na serwer:**
-    ```bash
-    git push origin <nazwa-gałęzi>
-    ```
-*   **Tworzenie Pull Requestu:**
-    Po wypchnięciu zmian na serwer, przejdź do strony repozytorium na GitHubie w przeglądarce i użyj przycisku **"Compare & pull request"**, aby zainicjować proces recenzji kodu przez Scrum Mastera.
+* **System startup:** `docker-compose up --build`
+* **System shutdown:** `docker-compose down`
+
+#### 3. Working with code (Push & Pull Request)
+
+* **Pushing changes to the server:**
+```bash
+# Push the local branch updates to the remote tracking repository
+git push origin <branch-name>
+```
+
+* **Creating a Pull Request:**
+After pushing the changes to the server, navigate to the repository page on GitHub within your browser and use the **"Compare & pull request"** button to initiate the code review process by the Scrum Master.
