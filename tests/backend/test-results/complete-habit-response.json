@@ -1,0 +1,30 @@
+{
+  "message": "Zadanie zaliczone!",
+  "habit": {
+    "id": 1,
+    "player_id": 1,
+    "name": "Workout",
+    "description": "Daily physical exercise",
+    "difficulty": "medium",
+    "frequency": "daily",
+    "target_days_of_week": null,
+    "target_days_per_week": null,
+    "xp_reward": 25,
+    "currency_reward": 25,
+    "is_active": 1,
+    "created_at": "2026-06-06 04:41:12",
+    "completed_today": 1
+  },
+  "player": {
+    "id": 1,
+    "username": "demo",
+    "level": 3,
+    "xp": 275,
+    "currentLevelXP": 250,
+    "maxXP": 500,
+    "xpInLevel": 25,
+    "xpToNextLevel": 225,
+    "currency": 145,
+    "created_at": "2026-06-06 04:41:12"
+  }
+}

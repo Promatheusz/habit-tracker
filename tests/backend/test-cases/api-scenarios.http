@@ -1,0 +1,66 @@
+### =================================================================
+### HABIT TRACKER RPG - MANUAL BACKEND API TEST SCENARIOS
+### =================================================================
+
+@baseUrl = http://localhost:5001/api
+
+### Scenario 1: Check server root status
+GET http://localhost:5001/
+Accept: application/json
+
+###
+
+### Scenario 2: Authenticate using the demo account
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "demo",
+  "password": "password"
+}
+
+### Capture token from login response
+@token = {{login.response.body.token}}
+
+###
+
+### Scenario 3: Fetch active player stats
+GET {{baseUrl}}/player
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### Scenario 4: Fetch active habits
+GET {{baseUrl}}/habits
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### Scenario 5: Create a new custom habit
+POST {{baseUrl}}/habits
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Mindfulness Meditation",
+  "description": "10 minutes of morning silence",
+  "difficulty": "easy",
+  "frequency": "daily"
+}
+
+###
+
+### Scenario 6: Complete habit with ID 1 (Workout)
+POST {{baseUrl}}/habits/1/complete
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+
+### Scenario 7: Fetch available rewards in the shop
+GET {{baseUrl}}/rewards
+Authorization: Bearer {{token}}
+Accept: application/json
