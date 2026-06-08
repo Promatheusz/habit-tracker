@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "username": "demo",
+  "level": 3,
+  "xp": 250,
+  "currentLevelXP": 250,
+  "maxXP": 500,
+  "xpInLevel": 0,
+  "xpToNextLevel": 250,
+  "currency": 120,
+  "created_at": "2026-06-06 04:19:29"
+}
