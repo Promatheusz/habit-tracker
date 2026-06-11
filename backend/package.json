@@ -12,6 +12,7 @@
     "prettier": "^3.3.3"
   },
   "scripts": {
+    "db:demo-reset": "node scripts/resetDemoDb.js",
     "start": "node src/app.js",
     "test": "node --test --test-isolation=none",
     "lint": "eslint src test",

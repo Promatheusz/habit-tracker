@@ -6,9 +6,10 @@ services:
     volumes:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
-      - sqlite_data:/usr/src/app/database # Persystencja bazy SQLite
+      - sqlite_data:/usr/src/app/data # Persystencja bazy SQLite
     environment:
       - NODE_ENV=development
+      - DB_PATH=/usr/src/app/data/database.sqlite
 
   frontend:
     build: ./frontend
