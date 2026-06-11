@@ -31,7 +31,7 @@ The frontend is available at `http://localhost:3000`. The backend API is mapped 
 
 ### Documentation And Diagrams
 
-Project documentation is stored in `/docs`. Mermaid Markdown diagrams in `/docs/diagrams` are the source of truth for UML and architecture deliverables.
+Project documentation is stored in `/docs`. Mermaid Markdown diagrams in `/docs/diagrams-as-a-code` are the source of truth for UML and architecture deliverables.
 
 Open the full documentation index here: [`docs/README.md`](docs/README.md).
 

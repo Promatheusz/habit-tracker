@@ -35,4 +35,4 @@ The value of the project is the combination of simple habit management with RPG-
 * Currency creates short-term reward motivation.
 * Rewards connect digital progress with real-world incentives.
 
-Developer and demo details are available in [Developer Handbook.md](Developer%20Handbook.md) and [Project Handoff.md](Project%20Handoff.md).
+Developer setup, demo flow, and presentation reset details are available in [Developer Handbook.md](Developer%20Handbook.md).
